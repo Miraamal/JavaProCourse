@@ -50,7 +50,6 @@ public class StackQueueExercises {
         generateParenthesis(n);
     }
 
-
     // Задача 1: Реверс очереди.
     public static void reverseQueue(Queue<Integer> queue) {
         Stack<Integer> stack = new Stack<>();
