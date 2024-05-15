@@ -15,6 +15,7 @@ import org.example._07_05_24.tasks.school.Course;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @ToString(exclude="courses")
 @EqualsAndHashCode
 @Getter
@@ -27,8 +28,13 @@ public class Student {
     private int age;
     private List<Course> courses;
 
-
     public Student(String name, String surname, int age) {
+        if(name == null || name.isEmpty()){
+            throw new RuntimeException("Name can't be null or empty");
+        }
+        if(surname == null || surname.isEmpty()){
+            throw new RuntimeException("Surname can't be null or empty");
+        }
         this.name = name;
         this.surname = surname;
         setAge(age);
@@ -41,6 +47,12 @@ public class Student {
     }
 
    public void addCourse(Course course){
+        if (course == null){
+            throw new RuntimeException("Course can't be null");
+        }
+        if (courses.contains(course)){
+            throw new RuntimeException("Student is already in the course");
+        }
         courses.add(course);
         course.addStudent(this);
    }
